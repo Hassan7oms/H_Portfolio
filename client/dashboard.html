@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Dashboard - Alex Chen</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cosmic-bg">
+        <div class="stars"></div>
+        <div class="nebula"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Content Dashboard</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">← Back to Site</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Content Management Dashboard</h1>
+                <p>Edit your portfolio content dynamically</p>
+            </div>
+
+            <div class="dashboard-tabs">
+                <button class="tab-btn" data-tab="personal">Personal Info</button>
+                <button class="tab-btn" data-tab="projects">Projects</button>
+                <button class="tab-btn" data-tab="services">Services</button>
+                <button class="tab-btn" data-tab="skills">Skills</button>
+                <button class="tab-btn" data-tab="experience">Experience</button>
+                <button class="tab-btn" data-tab="contact">Contact</button>
+            </div>
+
+            <div class="tab-content active" id="personal-tab">
+                <div class="form-section">
+                    <h2>Personal Information</h2>
+                    <form id="personal-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role/Title</label>
+                            <input type="text" id="role" name="role">
+                        </div>
+                        <div class="form-group">
+                            <label for="greeting">Greeting</label>
+                            <input type="text" id="greeting" name="greeting">
+                        </div>
+                        <div class="form-group">
+                            <label for="hero-description">Hero Description</label>
+                            <textarea id="hero-description" name="hero-description" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="about-subtitle">About Subtitle</label>
+                            <input type="text" id="about-subtitle" name="about-subtitle">
+                        </div>
+                        <div class="form-group">
+                            <label for="about-story">About Story</label>
+                            <textarea id="about-story" name="about-story" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="about-what-i-do">What I Do</label>
+                            <textarea id="about-what-i-do" name="about-what-i-do" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="about-approach">My Approach</label>
+                            <textarea id="about-approach" name="about-approach" rows="4"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="years-experience">Years Experience</label>
+                                <input type="text" id="years-experience" name="years-experience">
+                            </div>
+                            <div class="form-group">
+                                <label for="projects-completed">Projects Completed</label>
+                                <input type="text" id="projects-completed" name="projects-completed">
+                            </div>
+                            <div class="form-group">
+                                <label for="happy-clients">Happy Clients</label>
+                                <input type="text" id="happy-clients" name="happy-clients">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Personal Info</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="tab-content" id="projects-tab">
+                <div class="form-section">
+                    <h2>Projects Management</h2>
+                    <div class="projects-manager">
+                        <div class="projects-list" id="projects-list">
+                            <!-- Projects will be loaded here -->
+                        </div>
+                        <button class="btn btn-secondary" id="add-project-btn">Add New Project</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="services-tab">
+                <div class="form-section">
+                    <h2>Services Management</h2>
+                    <div class="services-manager">
+                        <div class="services-list" id="services-list">
+                            <!-- Services will be loaded here -->
+                        </div>
+                        <button class="btn btn-secondary" id="add-service-btn">Add New Service</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="skills-tab">
+                <div class="form-section">
+                    <h2>Skills Management</h2>
+                    <div class="skills-manager">
+                        <div class="skills-list" id="skills-list">
+                            <!-- Skills will be loaded here -->
+                        </div>
+                        <button class="btn btn-secondary" id="add-skill-btn">Add New Skill</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="experience-tab">
+                <div class="form-section">
+                    <h2>Experience Management</h2>
+                    <div class="experience-manager">
+                        <div class="experience-list" id="experience-list">
+                            <!-- Experience will be loaded here -->
+                        </div>
+                        <button class="btn btn-secondary" id="add-experience-btn">Add New Experience</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="contact-tab">
+                <div class="form-section">
+                    <h2>Contact Information</h2>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-subtitle">Contact Subtitle</label>
+                            <input type="text" id="contact-subtitle" name="contact-subtitle">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-description">Contact Description</label>
+                            <textarea id="contact-description" name="contact-description" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-contact">Email</label>
+                            <input type="email" id="email-contact" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location">
+                        </div>
+                        <h3>Social Links</h3>
+                        <div class="social-manager" id="social-manager">
+                            <!-- Social links will be loaded here -->
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Contact Info</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="dashboard-actions">
+                <button class="btn btn-outline" id="export-data">Export Data</button>
+                <button class="btn btn-outline" id="import-data">Import Data</button>
+                <button class="btn btn-danger" id="reset-data">Reset to Default</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/dashboard.js"></script>
+</body>
+</html>
