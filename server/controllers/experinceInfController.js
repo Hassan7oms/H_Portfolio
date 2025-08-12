@@ -37,7 +37,7 @@ exports.updateExperince = async(req , res )=>{
 
 exports.deleteExperince = async (req,res)=>{
     try{
-        const deleted  = await experinceInf.findByIdAndDelete(req.param.id);
+        const deleted  = await experinceInf.findByIdAndDelete(req.params.id);
         if(!deleted){
             return res.status(400).json({message :'experince not found' })
         }
