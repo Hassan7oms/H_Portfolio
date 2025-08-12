@@ -1,35 +1,45 @@
 <main class="main-content">
-        <section class="page-hero">
-            <div class="container">
-                <h1 class="page-title">Services</h1>
-                <p class="page-subtitle" data-content="services-subtitle">Transforming ideas into digital reality</p>
-            </div>
-        </section>
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">Services</h1>
+            <!-- The subtitle is now dynamic -->
+            <p class="page-subtitle">{{ pageSubtitle }}</p>
+        </div>
+    </section>
 
-        <section class="services-grid-section">
-            <div class="container">
-                <div class="services-grid" id="services-grid">
-                    <!-- Services will be loaded dynamically -->
+    <!-- ============================================= -->
+    <!-- === DYNAMIC SERVICES GRID SECTION === -->
+    <!-- ============================================= -->
+    <section class="services-grid-section">
+        <div class="container">
+            <!-- Add loading and error states -->
+            <div *ngIf="isLoading" class="loading-state">Loading services...</div>
+            <div *ngIf="errorMessage" class="error-state">{{ errorMessage }}</div>
+            <div *ngIf="!isLoading && services.length === 0" class="empty-state">No services currently offered.</div>
+
+            <div class="services-grid" *ngIf="!isLoading && services.length > 0">
+                <!-- Use *ngFor to loop through the services array -->
+                <div class="service-card" *ngFor="let service of services">
+                    <div class="service-icon">
+                        <!-- Use [class] binding to dynamically set the icon from your data -->
+                        <i [class]="service.icon"></i>
+                    </div>
+                    <h3 class="service-title">{{ service.title }}</h3>
+                    <p class="service-description">{{ service.description }}</p>
+                    <!-- You can add more dynamic fields here if needed, like a list of features -->
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- <section class="process-section">
-            <div class="container">
-                <h2 class="section-title">My Process</h2>
-                <div class="process-steps" id="process-steps"> -->
-                    <!-- Process steps will be loaded dynamically -->
-                <!-- </div>
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Let's collaborate to bring your vision to life with cutting-edge technology and innovative solutions.</p>
+                <!-- Use routerLink for internal navigation -->
+                <a routerLink="/contact" class="btn btn-primary">Get Started</a>
             </div>
-        </section> -->
-
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to Start Your Project?</h2>
-                    <p>Let's collaborate to bring your vision to life with cutting-edge technology and innovative solutions.</p>
-                    <a href="contact.html" class="btn btn-primary">Get Started</a>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>

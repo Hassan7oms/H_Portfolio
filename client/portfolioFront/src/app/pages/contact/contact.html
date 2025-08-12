@@ -1,55 +1,49 @@
 <main class="main-content">
-        <section class="page-hero">
-            <div class="container">
-                <h1 class="page-title">Contact</h1>
-                <p class="page-subtitle" data-content="contact-subtitle">Let's create something amazing together</p>
-            </div>
-        </section>
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">Contact</h1>
+            <p class="page-subtitle">Let's create something amazing together</p>
+        </div>
+    </section>
 
-        <section class="contact-section">
-            <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h2>Get In Touch</h2>
-                        <p data-content="contact-description">
-                            Ready to bring your ideas to life? I'm always excited to work on new projects and collaborate 
-                            with innovative minds. Let's discuss how we can create something extraordinary together.
-                        </p>
+    <section class="contact-section">
+        <div class="container">
+            <!-- Show a loading message while the API call is in progress -->
+            <div *ngIf="isLoading" class="loading-state">Loading contact information...</div>
+            
+            <!-- Show an error message if the API call fails -->
+            <div *ngIf="errorMessage" class="error-state">{{ errorMessage }}</div>
 
-                        <div class="contact-methods" id="contact-methods">
-                            <!-- Contact methods will be loaded dynamically -->
-                        </div>
+            <!-- This is the main content, shown only when loading is complete and there are no errors -->
+            <div class="contact-grid" *ngIf="!isLoading && !errorMessage">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>
+                        I'm always excited to work on new projects and collaborate with innovative minds. 
+                        Whether you have a question or just want to say hi, feel free to connect with me through any of the platforms below.
+                    </p>
+                </div>
 
-                        <div class="social-connect">
-                            <h3>Connect With Me</h3>
-                            <div class="social-links" id="social-links-contact">
-                                <!-- Social links will be loaded dynamically -->
-                            </div>
-                        </div>
+                <div class="social-connect-container">
+                    <h3>Connect With Me</h3>
+                    <!-- Show a message if no links are returned from the API -->
+                    <div *ngIf="socialLinks.length === 0" class="empty-state">
+                        Social links are coming soon!
                     </div>
 
-                    <div class="contact-form-container">
-                        <form class="contact-form" id="contact-form">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="6" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
+                    <!-- Use *ngFor to loop through the socialLinks array and create a link for each item -->
+                    <div class="social-links" *ngIf="socialLinks.length > 0">
+                        <a *ngFor="let social of socialLinks" 
+                           [href]="social.socialMediaLink" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="social-link" 
+                           [title]="social.name">
+                            <img [src]="social.socialMediaiconImg" [alt]="social.name + ' icon'" class="social-icon">
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>

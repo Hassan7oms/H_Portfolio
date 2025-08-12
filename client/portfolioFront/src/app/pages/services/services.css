@@ -227,3 +227,27 @@
     font-size: 1.5rem;
   }
 }
+
+.loading-state,
+.error-state,
+.empty-state {
+    text-align: center;
+    padding: 4rem 1rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    background: rgba(26, 26, 46, 0.5);
+    border: 1px dashed var(--border-color);
+    border-radius: 15px;
+}
+
+.error-state {
+    color: var(--error-color, #ff4d4d);
+    border-color: var(--error-color, #ff4d4d);
+}
+
+/* Ensure Font Awesome icons render correctly */
+.service-icon i {
+    font-style: normal; /* Reset italics if not using an icon font that requires it */
+    font-size: 2.5rem;
+    color: white;
+}

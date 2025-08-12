@@ -219,3 +219,34 @@
     text-align: center;
   }
 }
+
+
+
+
+
+/* --- Additions for projects.css --- */
+
+/* Styles for loading, error, and empty states */
+.loading-state,
+.error-state,
+.empty-state {
+    text-align: center;
+    padding: 4rem 1rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    background: rgba(26, 26, 46, 0.5);
+    border: 1px dashed var(--border-color);
+    border-radius: 15px;
+}
+
+.error-state {
+    color: var(--error-color, #ff4d4d);
+    border-color: var(--error-color, #ff4d4d);
+}
+
+/* Style for the project image to ensure it covers the area */
+.project-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

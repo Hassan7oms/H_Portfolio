@@ -335,3 +335,81 @@
     padding: 0.25rem 0.75rem;
   }
 }
+/* --- Additions for about.css --- */
+
+/* For the skill icons loaded from the database */
+.skill-icon-img {
+    height: 32px; /* Control the size of the icon */
+    width: 32px;
+    object-fit: contain; /* Ensure the image scales correctly */
+    margin-bottom: 0.75rem;
+}
+
+/* For the skill progress bar (optional but looks great) */
+.skill-level-bar-container {
+    width: 80%;
+    height: 6px;
+    background-color: rgba(10, 10, 15, 0.8);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0.5rem auto 0;
+}
+
+.skill-level-bar {
+    height: 100%;
+    background: var(--accent-primary);
+    border-radius: 3px;
+}
+
+/* To alternate timeline items correctly with ngClass */
+.timeline-item.odd {
+  left: 0;
+  padding-right: 2rem;
+}
+
+.timeline-item.even {
+  left: 50%;
+  padding-left: 2rem;
+}
+
+.timeline-item.odd .timeline-content::before {
+  right: -20px;
+  border-left-color: var(--border-color);
+}
+
+.timeline-item.even .timeline-content::before {
+  left: -20px;
+  border-right-color: var(--border-color);
+}
+
+.timeline-item.odd .timeline-date {
+  right: -4rem;
+}
+
+.timeline-item.even .timeline-date {
+  left: -4rem;
+}
+
+/* Responsive adjustments for timeline with ngClass */
+@media (max-width: 768px) {
+    .timeline-item.even, .timeline-item.odd {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 4rem !important;
+        padding-right: 0 !important;
+    }
+
+    .timeline-item.even .timeline-content::before, 
+    .timeline-item.odd .timeline-content::before {
+        left: -20px !important;
+        right: auto !important;
+        border-right-color: var(--border-color) !important;
+        border-left-color: transparent !important;
+    }
+
+    .timeline-item.even .timeline-date, 
+    .timeline-item.odd .timeline-date {
+        left: -3rem !important;
+        right: auto !important;
+    }
+}

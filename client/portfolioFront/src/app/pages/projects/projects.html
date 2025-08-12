@@ -1,27 +1,60 @@
 <main class="main-content">
-        <section class="page-hero">
-            <div class="container">
-                <h1 class="page-title">Projects</h1>
-                <p class="page-subtitle" data-content="projects-subtitle">Explore my digital creations and innovations</p>
-            </div>
-        </section>
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">Projects</h1>
+            <!-- The subtitle is now dynamic -->
+            <p class="page-subtitle">{{ pageSubtitle }}</p>
+        </div>
+    </section>
 
-        <!-- <section class="projects-filter">
-            <div class="container">
-                <div class="filter-buttons" id="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="web">Web Apps</button>
-                    <button class="filter-btn" data-filter="mobile">Mobile</button>
-                    <button class="filter-btn" data-filter="design">Design</button>
+    <!-- ============================================= -->
+    <!-- === DYNAMIC PROJECTS FILTER SECTION === -->
+    <!-- ============================================= -->
+    <section class="projects-filter" *ngIf="!isLoading && categories.length > 1">
+        <div class="container">
+            <div class="filter-buttons">
+                <!-- Loop through the unique categories to create filter buttons -->
+                <button 
+                    *ngFor="let category of categories" 
+                    class="filter-btn"
+                    [class.active]="category === activeFilter"
+                    (click)="filterProjects(category)">
+                    {{ category }}
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- === DYNAMIC PROJECTS SHOWCASE SECTION === -->
+    <!-- ============================================= -->
+    <section class="projects-showcase">
+        <div class="container">
+            <!-- Add loading, error, and empty states for better UX -->
+            <div *ngIf= "isLoading" class="loading-state">Loading projects...</div>
+            <div *ngIf="errorMessage" class="error-state">{{ errorMessage }}</div>
+            <div *ngIf="!isLoading && filteredProjects.length === 0" class="empty-state">No projects match the selected filter.</div>
+
+            <div class="projects-grid" *ngIf="!isLoading && filteredProjects.length > 0">
+                <!-- Use *ngFor to loop through the FILTERED projects array -->
+                <div class="project-card" *ngFor="let project of filteredProjects">
+                    <div class="project-image" [style.background-image]="'url(' + project.imgsUrl + ')'">
+                        <span *ngIf="!project.imgsUrl">🚀</span>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">{{ project.title }}</h3>
+                        <p class="project-category">{{ project.category }}</p>
+                        <p class="project-description">{{ project.description }}</p>
+                        <div class="project-tech" *ngIf="project.technologies && project.technologies.length > 0">
+                            <span class="tech-tag" *ngFor="let tech of project.technologies">{{ tech }}</span>
+                        </div>
+                        <div class="project-links">
+                            <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" class="project-link">GitHub</a>
+                            <a *ngIf="project.liveDemoUrl" [href]="project.liveDemoUrl" target="_blank" class="project-link">Live Demo</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section> -->
-
-        <section class="projects-showcase">
-            <div class="container">
-                <div class="projects-grid" id="projects-grid">
-                    <!-- Projects will be loaded dynamically -->
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
