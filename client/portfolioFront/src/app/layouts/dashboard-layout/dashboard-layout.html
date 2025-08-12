@@ -1,0 +1,23 @@
+<div class="cosmic-bg">
+    <div class="stars"></div>
+    <div class="nebula"></div>
+</div>
+
+<!-- You can create a new, separate <app-dashboard-header> or just put the HTML here directly -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <span class="logo-text">Content Dashboard</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a routerLink="/home" class="nav-link">← Back to Site</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="dashboard-main">
+    <!-- The dashboard child pages (Personal Info, Projects, etc.) will be rendered here -->
+    <router-outlet></router-outlet>
+</main>
+
+

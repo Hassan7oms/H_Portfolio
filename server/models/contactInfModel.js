@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const contactInf=new mongoose.Schema({
-    socialMediaicon: {
+    socialMediaiconImg: {
         type: String,
         required: true,
         trim: true
@@ -11,11 +11,13 @@ const contactInf=new mongoose.Schema({
         required:true,
         trim:true
     },
-    
-
-
-
+    name: {
+        type: String,
+        required: true,
+        trim: true
+    }
 })
 
 
-module.exports= mongoose.model("contact",contactInf);
+
+module.exports= mongoose.model("contactInfModel",contactInf);

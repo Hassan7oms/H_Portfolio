@@ -1,0 +1,74 @@
+<div class="body">
+    <!-- Section to display the list of existing experiences -->
+    <div class="list-container">
+        <h2>Work Experience</h2>
+        <div *ngIf="isLoading">Loading experiences...</div>
+        <div *ngIf="errorMessage" class="message error">{{ errorMessage }}</div>
+        <div *ngIf="!isLoading && experiences.length === 0">No experiences found. Add one below!</div>
+
+        <div class="experience-list" *ngIf="!isLoading && experiences.length > 0">
+            <div class="list-item" *ngFor="let exp of experiences">
+                <div class="list-item-header">
+                    <div>
+                        <h3 class="list-item-title">{{ exp.jobTitle }}</h3>
+                        <p class="list-item-subtitle">{{ exp.companyName }}</p>
+                    </div>
+                    <div class="list-item-actions">
+                        <button type="button" class="btn-small btn-edit" (click)="editExperience(exp)">Edit</button>
+                        <button type="button" class="btn-small btn-delete" (click)="deleteExperience(exp._id)">Delete</button>
+                    </div>
+                </div>
+                <p class="list-item-dates">
+                    {{ exp.startDate | date: 'MMM yyyy' }} - {{ exp.endDate ? (exp.endDate | date: 'MMM yyyy') : 'Present' }}
+                </p>
+                <p class="list-item-description">{{ exp.responsibilities }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section for the Add/Edit form -->
+    <div class="form-container">
+      <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+        <h2>{{ isEditMode ? 'Edit Experience' : 'Add New Experience' }}</h2>
+        
+        <div class="form-row">
+            <!-- Job Title Input -->
+            <div class="form-group">
+              <label for="jobTitle">Job Title</label>
+              <input type="text" id="jobTitle" placeholder="e.g., Senior Developer" formControlName="jobTitle">
+            </div>
+
+            <!-- Company Name Input -->
+            <div class="form-group">
+              <label for="companyName">Company Name</label>
+              <input type="text" id="companyName" placeholder="e.g., Tech Solutions Inc." formControlName="companyName">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- Start Date Input -->
+            <div class="form-group">
+              <label for="startDate">Start Date</label>
+              <input type="date" id="startDate" formControlName="startDate">
+            </div>
+
+            <!-- End Date Input -->
+            <div class="form-group">
+              <label for="endDate">End Date (leave blank if current)</label>
+              <input type="date" id="endDate" formControlName="endDate">
+            </div>
+        </div>
+        
+        <!-- Responsibilities Textarea -->
+        <div class="form-group">
+          <label for="responsibilities">Responsibilities</label>
+          <textarea id="responsibilities" rows="5" placeholder="Describe your key roles and achievements..." formControlName="responsibilities"></textarea>
+        </div>
+        
+        <div class="form-group text-center form-actions">
+          <input type="submit" [value]="isEditMode ? 'Update Experience' : 'Save Experience'" [disabled]="myForm.invalid"/>
+          <button *ngIf="isEditMode" type="button" class="btn-secondary" (click)="resetForm()">Cancel Edit</button>
+        </div>
+      </form>
+    </div>
+</div>

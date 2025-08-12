@@ -1,0 +1,320 @@
+/* --- Global Variables (Should be in your main stylesheet) --- */
+:root {
+    --bg-primary: #0a0a1a;
+    --bg-secondary: rgba(26, 26, 46, 0.8);
+    --bg-input: rgba(10, 10, 15, 0.8);
+    --accent-primary: #00aaff;
+    --accent-primary-glow: rgba(0, 170, 255, 0.2);
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0b0;
+    --border-color: rgba(0, 170, 255, 0.2);
+    --error-color: #ff4d4d;
+    --font-primary: 'Orbitron', sans-serif;
+    --font-secondary: 'Exo 2', sans-serif;
+}
+
+/* --- Main Form Container and Layout --- */
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+    font-family: var(--font-secondary);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.form-container h2 {
+    font-family: var(--font-primary);
+    color: var(--accent-primary);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+}
+
+/* --- Form Groups and Inputs --- */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 15px var(--accent-primary-glow);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* --- Styles for FormArray (Technologies) --- */
+.dynamic-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.dynamic-input-group input {
+    flex-grow: 1; /* Make the input take up most of the space */
+}
+
+.btn-remove-tech {
+    background: transparent;
+    border: 1px solid var(--error-color);
+    color: var(--error-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.2s ease;
+}
+.btn-remove-tech:hover {
+    background: var(--error-color);
+    color: white;
+}
+
+.btn-add {
+    background: transparent;
+    border: 1px dashed var(--accent-primary);
+    color: var(--accent-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all 0.2s ease;
+}
+.btn-add:hover {
+    background: var(--accent-primary-glow);
+    border-style: solid;
+}
+
+/* --- Validation and Submit Button --- */
+.msg {
+    color: var(--error-color);
+    font-size: 0.85rem;
+    padding-top: 0.5rem;
+}
+
+.form-group.text-center {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+input[type="submit"] {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border: none;
+    border-radius: 25px;
+    padding: 1rem 3rem;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:disabled {
+    background-color: #333;
+    color: #666;
+    cursor: not-allowed;
+}
+/* --- Add these styles to your projects-info.css file --- */
+
+/* --- Layout for List and Form --- */
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Space between the list and the form */
+}
+
+.list-container, .form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto; /* Center the containers */
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.list-container h2, .form-container h2 {
+    font-family: var(--font-primary);
+    color: var(--accent-primary);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+}
+
+/* --- Styles for the Existing Projects List --- */
+.projects-list {
+    margin-bottom: 1rem;
+}
+
+.list-item {
+    background: rgba(10, 10, 15, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.list-item:hover {
+    border-color: var(--accent-primary);
+    transform: scale(1.02);
+}
+
+.list-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.list-item-title {
+    font-family: var(--font-primary);
+    color: var(--accent-primary);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.list-item-category {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background-color: var(--bg-input);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.list-item-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* --- Button Styles for Edit/Delete --- */
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-edit {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b; /* Amber */
+    border-color: rgba(245, 158, 11, 0.3);
+}
+.btn-edit:hover {
+    background: #f59e0b;
+    color: var(--bg-primary);
+}
+
+.btn-delete {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444; /* Red */
+    border-color: rgba(239, 68, 68, 0.3);
+}
+.btn-delete:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* --- Styles for Form Actions --- */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-secondary);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+    background-color: var(--text-secondary);
+    color: var(--bg-primary);
+}
+
+.form-group select {
+  /* This removes the default browser appearance (like the standard arrow) */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  /* Add a custom arrow using a background SVG for a futuristic look */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2300aaff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  
+  /* Make sure padding doesn't overlap the arrow */
+  padding-right: 2.5rem; 
+}
+
+/* 2. THE DIRECT FIX: Style the <option> elements */
+.form-group select option {
+  /* Set a dark background for the dropdown list itself */
+  background: var(--bg-primary, #0a0a1a); 
+  
+  /* CRITICAL: Set a light text color so the options are visible */
+  color: var(--text-primary, #e0e0e0);
+  
+  padding: 0.5rem 1rem; /* Add some padding for better readability */
+}
+
+/* 3. Style the disabled "placeholder" option */
+.form-group select option[value=""][disabled] {
+  color: var(--text-secondary, #a0a0b0); /* Make it look like a placeholder */
+}
+
+/* 4. (Optional but recommended) Style the hover state for options in some browsers */
+/* Note: This has limited browser support but is a nice touch where it works */
+.form-group select option:checked,
+.form-group select option:hover {
+    background: var(--accent-primary-glow, rgba(0, 170, 255, 0.2));
+    color: var(--accent-primary, #00aaff);
+}

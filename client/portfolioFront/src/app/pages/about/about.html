@@ -1,0 +1,80 @@
+<main class="main-content">
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="page-title">About Me</h1>
+                <p class="page-subtitle" data-content="about-subtitle">{{dataobject.aboutSubtitle}}</p>
+            </div>
+        </section>
+
+        <section class="about-content">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <div class="about-section">
+                            <h2>My Story</h2>
+                            <p data-content="about-story">
+                                {{dataobject.aboutStory}}
+                            </p>
+                            
+                        </div>
+
+                        <div class="about-section">
+                            <h2>What I Do</h2>
+                            <p data-content="about-what-i-do">
+                                {{dataobject.WhatIDo}}
+                            </p>
+                        </div>
+
+                        <div class="about-section">
+                            <h2>My Approach</h2>
+                            <p data-content="about-approach">
+                                {{dataobject.myApproach}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about-visual">
+                        <div class="profile-card">
+                            <div class="profile-image">
+                                <div class="image-placeholder">
+                                    <span>👨‍💻</span>
+                                </div>
+                            </div>
+                            <div class="profile-stats">
+                                <div class="stat">
+                                    <span class="stat-number" data-content="years-experience">{{dataobject.yearsExperience}}</span>
+                                    <span class="stat-label">Years Experience</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number" data-content="projects-completed">{{dataobject.projectsCompleted}}</span>
+                                    <span class="stat-label">Projects Completed</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number" data-content="happy-clients">+{{dataobject.happyClients}}</span>
+                                    <span class="stat-label">Happy Clients</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <div class="container">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-categories" id="skills-categories">
+                    <!-- Skills will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <section class="experience-section">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline" id="experience-timeline">
+                    <!-- Experience will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>

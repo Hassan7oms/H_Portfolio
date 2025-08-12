@@ -1,0 +1,94 @@
+<div class="body">
+    <!-- Section to display the list of existing projects -->
+    <div class="list-container">
+        <h2>Existing Projects</h2>
+        <div *ngIf="isLoading">Loading projects...</div>
+        <div *ngIf="!isLoading && projects.length === 0">No projects found. Add one below!</div>
+
+        <div class="projects-list" *ngIf="!isLoading && projects.length > 0">
+            <!-- Loop through the projects array -->
+            <div class="list-item" *ngFor="let project of projects">
+                <div class="list-item-header">
+                    <h3 class="list-item-title">{{ project.title }}</h3>
+                    <div class="list-item-actions">
+                        <!-- Edit and Delete buttons call component methods -->
+                        <button type="button" class="btn-small btn-edit" (click)="editProject(project)">Edit</button>
+                        <button type="button" class="btn-small btn-delete" (click)="deleteProject(project._id)">Delete</button>
+                    </div>
+                </div>
+                <p class="list-item-category">{{ project.category }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section for the Add/Edit form -->
+    <div class="form-container">
+      <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+        <!-- The form title changes based on the mode -->
+        <h2>{{ isEditMode ? 'Edit Project' : 'Add New Project' }}</h2>
+        
+        <!-- ... (The entire form structure from the previous answer goes here) ... -->
+        <!-- Project Title Input -->
+         <div class="form-group">
+          <label for="title">Project Title</label>
+          <input type="text" id="title" placeholder="Enter the project title" formControlName="title">
+          <div class="msg" *ngIf="myForm.get('title')?.invalid && myForm.get('title')?.touched">
+            <span *ngIf="myForm.get('title')?.errors?.['required']">Title is required.</span>
+            <span *ngIf="myForm.get('title')?.errors?.['minlength']">Title must be at least 3 characters.</span>
+          </div>
+        </div>
+        
+        <!-- Description Textarea -->
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" rows="4" placeholder="Describe the project" formControlName="description"></textarea>
+        </div>
+  
+        <!-- Image URL Input -->
+        <div class="form-group">
+          <label for="imgsUrl">Image URL</label>
+          <input type="url" id="imgsUrl" placeholder="https://example.com/image.png" formControlName="imgsUrl">
+        </div>
+        <!-- Category Select Dropdown -->
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" formControlName="category">
+              <!-- This is the placeholder -->
+              <option value="" disabled>Select a category</option> 
+              <option value="Web Development">Web Development</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Mobile App">Mobile App</option>
+          </select>
+        </div>
+        
+        <!-- Technologies FormArray -->
+        <div class="form-group" formArrayName="technologies">
+          <label>Technologies Used</label>
+          <!-- Loop through each control in the FormArray -->
+          <div *ngFor= "let tech of technologies.controls; let i = index" class="dynamic-input-group">
+            <input type="text" placeholder="e.g., Angular, Node.js" [formControlName]="i">
+            <!-- Add a button to remove a technology (optional but good UX) -->
+            <button *ngIf= "technologies.controls.length > 1" type="button" class="btn-remove-tech" (click)="removeTechnology(i)">×</button>
+          </div>
+          <button type="button" class="btn-add" (click)="addTechnology()">+ Add Technology</button>
+        </div>
+
+        <!-- Live Demo URL Input -->
+        <div class="form-group">
+            <label for="liveDemoUrl">Live Demo URL</label>
+            <input type="url" id="liveDemoUrl" placeholder="https://live-demo.com" formControlName="liveDemoUrl">
+        </div>
+
+        <!-- GitHub URL Input -->
+        <div class="form-group">
+            <label for="githubUrl">GitHub URL</label>
+            <input type="url" id="githubUrl" placeholder="https://github.com/user/repo" formControlName="githubUrl">
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="form-group text-center">
+          <input type="submit" value="Save Project" [disabled]="myForm.invalid"/>
+        </div>
+      </form>
+    </div>
+</div>

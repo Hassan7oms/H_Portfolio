@@ -1,0 +1,57 @@
+<div class="cosmic-bg">
+        <div class="stars"></div>
+        <div class="nebula"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Content Management Dashboard</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a routerLink="/home" class="nav-link">← Back to Site</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+            <div class="dashboard-header">
+                <h1>Content Management Dashboard</h1>
+                <p>Edit your portfolio content dynamically</p>
+            </div>
+     <div class="dashboard-tabs">
+            <!-- We use (click) to call our selectTab method and [class.active] to apply the active style -->
+            <button class="tab-btn" [class.active]= "activeTab === 'personal'" (click)="selectTab('personal')">Personal Info</button>
+            <button class="tab-btn" [class.active]= "activeTab === 'projects'" (click)="selectTab('projects')">Projects</button>
+            <button class="tab-btn" [class.active]= "activeTab === 'services'" (click)="selectTab('services')">Services</button>
+            <button class="tab-btn" [class.active]= "activeTab === 'skills'" (click)="selectTab('skills')">Skills</button>
+            <button class="tab-btn" [class.active]= "activeTab === 'experince'" (click)="selectTab('experience')">Experience</button>
+            <button class="tab-btn" [class.active]= "activeTab === 'contact'" (click)="selectTab('contact')">Contact</button>
+
+        </div>
+
+
+     <div class="tab-content-container">
+            <div *ngIf= "activeTab === 'personal'">
+                <app-personal-info></app-personal-info>
+            </div>
+            <div *ngIf= "activeTab === 'projects'">
+                <app-projects-info></app-projects-info>
+            </div>
+            <div *ngIf= "activeTab === 'services'">
+                <app-services-info></app-services-info>
+            </div>
+            <div *ngIf= "activeTab === 'skills'">
+                <app-skills-info></app-skills-info>
+            </div>
+
+            <div *ngIf= "activeTab === 'experience'">
+                <app-experince-info></app-experince-info>
+            </div>
+            
+            <div *ngIf= "activeTab === 'contact'">
+                <app-contact-info></app-contact-info>
+            </div>
+        </div>
+
+
+   

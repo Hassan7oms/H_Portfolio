@@ -1,0 +1,84 @@
+<div class="body">
+    <div class="form-container">
+      <!-- These bindings connect the form to your myForm FormGroup in the .ts file -->
+      <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+        <h2>Personal Info Form</h2>
+        
+        <!-- Name Input -->
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <!-- formControlName links this input to the 'name' control -->
+          <input type="text" id="name" placeholder="Enter your full name" formControlName="name">
+          <!-- This div shows validation errors for the 'name' control -->
+          <div class="msg" *ngIf= "myForm.get('name')?.invalid && myForm.get('name')?.touched">
+            <span *ngIf= "myForm.get('name')?.errors?.['required']">Name is required.</span>
+            <span *ngIf= "myForm.get('name')?.errors?.['minlength']">Name must be at least 5 characters long.</span>
+          </div>
+        </div>
+        
+        <!-- Title Input -->
+        <div class="form-group">
+          <label for="title">Role/Title</label>
+          <input type="text" id="title" placeholder="e.g., Full Stack Developer" formControlName="title">
+        </div>
+  
+        <!-- Greeting Input -->
+        <div class="form-group">
+          <label for="greeting">Greeting</label>
+          <input type="text" id="greeting" placeholder="e.g., Hello, I'm" formControlName="greeting">
+        </div>
+        
+        <!-- Hero Description Input -->
+        <div class="form-group">
+          <label for="heroDescription">Hero Description</label>
+          <textarea id="heroDescription" rows="3" placeholder="A short, impactful description for the homepage" formControlName="heroDescription"></textarea>
+        </div>
+        
+        <!-- About Subtitle Input -->
+        <div class="form-group">
+          <label for="aboutSubtitle">About Page Subtitle</label>
+          <input type="text" id="aboutSubtitle" placeholder="A subtitle for the about page" formControlName="aboutSubtitle">
+        </div>
+        
+        <!-- About Story Textarea -->
+        <div class="form-group">
+          <label for="aboutStory">Your Story</label>
+          <textarea id="aboutStory" rows="4" placeholder="Tell your professional story" formControlName="aboutStory"></textarea>
+        </div>
+        
+        <!-- What I Do Textarea -->
+        <div class="form-group">
+          <label for="WhatIDo">What I Do</label>
+          <textarea id="WhatIDo" rows="4" placeholder="Describe what you do" formControlName="WhatIDo"></textarea>
+        </div>
+
+        <!-- My Approach Textarea -->
+        <div class="form-group">
+          <label for="myApproach">My Approach</label>
+          <textarea id="myApproach" rows="4" placeholder="Describe your work approach" formControlName="myApproach"></textarea>
+        </div>
+
+        <!-- Experience Stats Row -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="yearsExperience">Years Experience</label>
+                <input type="text" id="yearsExperience" formControlName="yearsExperience">
+            </div>
+            <div class="form-group">
+                <label for="projectsCompleted">Projects Completed</label>
+                <input type="text" id="projectsCompleted" formControlName="projectsCompleted">
+            </div>
+            <div class="form-group">
+                <label for="happyClients">Happy Clients</label>
+                <input type="text" id="happyClients" formControlName="happyClients">
+            </div>
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="form-group text-center">
+          <!-- The [disabled] property prevents submission if the form is invalid -->
+          <input type="submit" value="Save Personal Info" [disabled]="myForm.invalid"/>
+        </div>
+      </form>
+    </div>
+</div>

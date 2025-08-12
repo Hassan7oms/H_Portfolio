@@ -3,31 +3,40 @@ const mongoose = require('mongoose');
 const experinceInf = mongoose.Schema({
 
     startDate : {
-        type: Number,
+        type: Date,
         required : true,
         trim: true
     },
 
     endDate : {
-        type: Number,
+        type: Date,
         required : true,
-        trim: true
+        trim: true,
+        default:null
         
     },
 
-    title:{
+    jobTitle:{
         type : String,
         required:true,
         trim:true
     },
 
-    description:{
+    responsibilities:{
         type: String,
         required:true,
         trim:true
+    },
+    
+    companyName:{
+        type:String,
+        required:true
     }
+
+    
 
     
 
 
 });
+module.exports= mongoose.model("experinceInfModel",experinceInf);
